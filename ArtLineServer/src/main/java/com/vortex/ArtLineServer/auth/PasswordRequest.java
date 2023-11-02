@@ -13,6 +13,5 @@ public class PasswordRequest {
 
     String email;
     String newPassword;
-    String resetToken;
 
 }
