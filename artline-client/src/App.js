@@ -12,6 +12,7 @@ import About from './pages/About';
 import { Route, Routes } from 'react-router-dom';
 
 function App() {
+
   return( 
     <>
       <NavBar />
