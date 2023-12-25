@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './Slider.css';
 
-const Slider = ({ slides }) => {
+const Slider = ({ slides, mainBanners }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slidesElementRef = useRef(null);
   const isTransitioningRef = useRef(false);
@@ -48,7 +48,7 @@ const Slider = ({ slides }) => {
     autoMoveIntervalRef.current = setInterval(() => {
       const nextSlide = (currentSlide + 1) % slides.length;
       handleSlideChange(nextSlide);
-    }, 5000); // Adjust the interval (in milliseconds) as needed
+    }, 5000); 
 
     // Clear interval on component unmount
     return () => {
@@ -57,34 +57,43 @@ const Slider = ({ slides }) => {
   }, [currentSlide, slides.length]);
 
   return (
-    <div className="slider">
-      <div
-        ref={slidesElementRef}
-        className="slides"
-        style={{
-          transform: `translateX(${-currentSlide * 100}%)`,
-        }}
-      >
-        {slides.map((slide, index) => (
-          <div
-            key={index}
-            className={`slide ${index === currentSlide ? 'active' : ''}`}
-            style={{ backgroundImage: `url(${slide})` }}
-          ></div>
-        ))}
-      </div>
-      
-      <div className="slide-menu">
-        <div className="pagination">
+    <div className="slider-container">      
+      <div className="slider">
+        <div
+          ref={slidesElementRef}
+          className="slides"
+          style={{
+            transform: `translateX(${-currentSlide * 100}%)`,
+          }}
+        >
+          {slides.map((slide, index) => (
+            <div
+              key={index}
+              className={`slide ${index === currentSlide ? 'active' : ''}`}
+              style={{ backgroundImage: `url(${slide})` }}
+            >
+
+            <div className="main-banners-container">
+              <img className='main-banner' src={mainBanners[currentSlide]} 
+              alt={`Main Banner ${currentSlide + 1}`} />
+            </div>
+
+            </div>
+          ))}
+        </div>
+
+        <div className="slide-menu">
+          <div className="pagination">
             {slides.map((_, index) => (
-            <button
+              <button
                 key={index}
                 className={`slide-button ${index === currentSlide ? 'active' : ''}`}
                 onClick={() => handleSlideChange(index)}
-            >
+              >
                 Slide {index + 1}
-            </button>
+              </button>
             ))}
+          </div>
         </div>
       </div>
     </div>

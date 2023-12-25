@@ -1,5 +1,6 @@
 import './App.css';
 import NavBar from './components/NavBar';
+import Footer from './components/Footer';
 import Home from './pages/Home';
 import Genres from './pages/Genres';
 import Asian from './pages/Asian';
@@ -12,6 +13,14 @@ import About from './pages/About';
 import { Route, Routes } from 'react-router-dom';
 
 function App() {
+
+  const socialMediaIcons = [
+    require('./assets/twitter_icon.png'),
+    require('./assets/facebook_icon.png'),
+    require('./assets/inst_icon.png'),
+    require('./assets/tg_icon.png'),
+    require('./assets/email_icon.png')
+  ];
 
   return( 
     <>
@@ -29,6 +38,7 @@ function App() {
           <Route path='/about' element={<About />}/>
         </Routes> 
       </div>
+      <Footer socialMediaIcons={socialMediaIcons} />
     </>
   )
 }
