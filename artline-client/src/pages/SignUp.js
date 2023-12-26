@@ -1,12 +1,15 @@
+// pages/SignUp.js
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './SignUp.css';
 import logo from '../assets/logo_full.png';
 import googleIcon from '../assets/google.png';
 import facebookIcon from '../assets/fb.png';
 import { Input, Tooltip } from 'antd';
+import api from '../services/api/api';
 
 export default function SignUp() {
+  const navigate = useNavigate(); // Заменить useHistory на useNavigate
   const [saveUser, setSaveUser] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -49,17 +52,27 @@ export default function SignUp() {
     return isValid;
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const isEmailValid = validateEmail();
     const isPasswordValid = validatePassword();
     const isRepeatPasswordValid = validateRepeatPassword();
 
-    // Check if all validations pass before proceeding with the submission
     if (isEmailValid && isPasswordValid && isRepeatPasswordValid) {
-      // Add logic for successful sign-up
-      console.log('Sign-up successful');
+      try {
+        const userData = { email, password, repeatPassword };
+        const response = await api.register(userData);
+        
+        // Обрабатываем успешный ответ от сервера
+        console.log('Sign-up successful', response);
+
+        // Переход на главную страницу после успешной регистрации
+        navigate('/'); // Заменить history.push('/') на navigate('/')
+
+      } catch (error) {
+        // Обрабатываем ошибки регистрации
+        console.error('Registration failed', error);
+      }
     } else {
-      // Handle validation errors if needed
       console.log('Validation failed');
     }
   };
