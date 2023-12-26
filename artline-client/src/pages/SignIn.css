@@ -343,7 +343,7 @@ body {
     font-weight: 300;
     line-height: normal;
     margin-top: 80px;
-    text-align: center; /* Align text in the center */
+    text-align: center;
   }
   
   .mini-menu-login {
@@ -378,5 +378,90 @@ body {
     display: inline;
   }
   
+
+  @media only screen and (max-width: 1366px) {
+    .signin-content {
+      width: 90%;
+      align-items: center;
+    }
   
+    .signin-left {
+      padding: 15px;
+      height: 750px;
+    }
+
+    .signin-right {
+      padding: 15px;
+      height: 750px;
+    }
+  
+    .login-text {
+      font-size: 40px;
+    }
+  
+    .left-text-big {
+      font-size: 40px;
+    }
+  
+    .left-text-small {
+      font-size: 14px;
+    }
+  
+    .input-wrapper label {
+      font-size: 14px;
+    }
+  
+    .input-wrapper input {
+      width: 100%;
+    }
+  
+    .login-button {
+      width: 100%;
+      height: 40px;
+      font-size: 14px;
+    }
+  }
+  
+  @media only screen and (max-width: 1024px) {
+    .signin-content {
+      width: 95%;
+      align-items: center;
+    }
+  
+    .signin-left {
+      padding: 10px;
+      height: 700px;
+    }
+
+    .signin-right {
+      padding: 10px;
+      height: 700px;
+    }
+  
+    .login-text {
+      font-size: 30px;
+    }
+  
+    .left-text-big {
+      font-size: 30px;
+    }
+  
+    .left-text-small {
+      font-size: 12px;
+    }
+  
+    .input-wrapper label {
+      font-size: 12px;
+    }
+  
+    .input-wrapper input {
+      width: 100%;
+    }
+  
+    .login-button {
+      width: 100%;
+      height: 35px;
+      font-size: 12px;
+    }
+  }
   
