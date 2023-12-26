@@ -4,12 +4,64 @@ import './SignUp.css';
 import logo from '../assets/logo_full.png';
 import googleIcon from '../assets/google.png';
 import facebookIcon from '../assets/fb.png';
+import { Input, Tooltip } from 'antd';
 
 export default function SignUp() {
   const [saveUser, setSaveUser] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [repeatPassword, setRepeatPassword] = useState('');
+  const [errors, setErrors] = useState({
+    email: { isValid: true, msg: '' },
+    password: { isValid: true, msg: '' },
+    repeatPassword: { isValid: true, msg: '' },
+  });
 
   const handleCheckboxChange = () => {
     setSaveUser(!saveUser);
+  };
+
+  const validateEmail = () => {
+    const emailRegex = /\S+@\S+\.\S+/;
+    const isValid = email.trim() !== '' && emailRegex.test(email);
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      email: { isValid, msg: isValid ? '' : 'Email is required and must be valid!' },
+    }));
+    return isValid;
+  };
+
+  const validatePassword = () => {
+    const isValid = password.trim() !== '' && password.length >= 6;
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      password: { isValid, msg: isValid ? '' : 'Password is required and must be at least 6 characters!' },
+    }));
+    return isValid;
+  };
+
+  const validateRepeatPassword = () => {
+    const isValid = repeatPassword.trim() !== '' && repeatPassword === password;
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      repeatPassword: { isValid, msg: isValid ? '' : 'Passwords do not match!' },
+    }));
+    return isValid;
+  };
+
+  const handleSubmit = () => {
+    const isEmailValid = validateEmail();
+    const isPasswordValid = validatePassword();
+    const isRepeatPasswordValid = validateRepeatPassword();
+
+    // Check if all validations pass before proceeding with the submission
+    if (isEmailValid && isPasswordValid && isRepeatPasswordValid) {
+      // Add logic for successful sign-up
+      console.log('Sign-up successful');
+    } else {
+      // Handle validation errors if needed
+      console.log('Validation failed');
+    }
   };
 
   return (
@@ -28,16 +80,37 @@ export default function SignUp() {
             <div className="form-input">
               <div className="input-wrapper">
                 <label htmlFor="username">Email</label>
-                <input type="text" id="username" />
+                <Tooltip title={errors.email.msg} visible={!errors.email.isValid} color="#2A2A2A">
+                  <Input
+                    type="text"
+                    id="username"
+                    onChange={(e) => setEmail(e.target.value)}
+                    onBlur={validateEmail}
+                  />
+                </Tooltip>
               </div>
               <div className="input-wrapper">
                 <label htmlFor="password">Password</label>
-                <input type={saveUser ? "text" : "password"} id="password" />
+                <Tooltip title={errors.password.msg} visible={!errors.password.isValid} color="#2A2A2A">
+                  <Input
+                    type={saveUser ? "text" : "password"}
+                    id="password"
+                    onChange={(e) => setPassword(e.target.value)}
+                    onBlur={validatePassword}
+                  />
+                </Tooltip>
               </div>
-              {/* Новый блок для повторного ввода пароля */}
+              {/* Repeat Password validation */}
               <div className="input-wrapper">
                 <label htmlFor="repeatPassword">Repeat Password</label>
-                <input type={saveUser ? "text" : "password"} id="repeatPassword" />
+                <Tooltip title={errors.repeatPassword.msg} visible={!errors.repeatPassword.isValid} color="#2A2A2A">
+                  <Input
+                    type={saveUser ? "text" : "password"}
+                    id="repeatPassword"
+                    onChange={(e) => setRepeatPassword(e.target.value)}
+                    onBlur={validateRepeatPassword}
+                  />
+                </Tooltip>
               </div>
               <div className="signup-checkbox" onClick={handleCheckboxChange}>
                 <input type="checkbox" id="keepLoggedIn" />
@@ -45,11 +118,13 @@ export default function SignUp() {
                   Save user
                 </label>
               </div>
-              <button className="singup-button">Sign Up</button>
+              <button className="singup-button" onClick={handleSubmit}>
+                Sign Up
+              </button>
             </div>
           </div>
           <div className="signup-social">
-            <p className='singup-with-text'>Or sing up now with</p>
+            <p className='singup-with-text'>Or sign up now with</p>
             <div className="social-buttons">
               <div>
                 <button className="google-button">
