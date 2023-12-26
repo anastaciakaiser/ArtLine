@@ -14,6 +14,7 @@ import Arts from './pages/Arts';
 import Support from './pages/Support';
 import About from './pages/About';
 import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
 
 const socialMediaIcons = [
   require('./assets/twitter_icon.png'),
@@ -26,10 +27,11 @@ const socialMediaIcons = [
 const App = () => {
   const location = useLocation();
   const isSignInPage = location.pathname.toLowerCase() === '/login';
+  const isSignUpPage = location.pathname.toLowerCase() === '/signup';
 
   return (
     <>
-      {isSignInPage ? null : <NavBar />}
+      {isSignInPage || isSignUpPage ? null : <NavBar />}
       <div className="container">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -42,9 +44,10 @@ const App = () => {
           <Route path="/support" element={<Support />} />
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
         </Routes>
       </div>
-      {isSignInPage ? null : <Footer socialMediaIcons={socialMediaIcons} />}
+      {isSignInPage || isSignUpPage ? null : <Footer socialMediaIcons={socialMediaIcons} />}
     </>
   );
 };

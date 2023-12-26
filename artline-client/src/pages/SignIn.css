@@ -80,7 +80,7 @@ body {
   }
   
   .signin-checkbox label {
-    margin-top: -15px;
+    margin-top: -16px;
     margin-left: 5px;
     color: #000;
     font-family: Inter;
@@ -93,7 +93,8 @@ body {
   .forgot-password-link {
     position: absolute;
     right: 0;
-    margin-top: -15px;
+    margin-top: -16px;
+    margin-right: 5px;
   }
   
   .forgot-password-link a {
@@ -162,13 +163,19 @@ body {
     height: 45px;
     border: 1px solid #2A2A2A;
     background: #231F20;
-    color: #E1E1E1;
+    color: #bebebe;
     font-family: Inter;
     font-size: 16px;
     font-weight: 700;
     line-height: normal;
     text-transform: capitalize;
     cursor: pointer;
+  }
+
+  .login-button:hover{
+    border: 1px solid #222222;
+    background: #252525;
+    color: #E1E1E1;
   }
   
   .signin-social {
@@ -179,6 +186,11 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  .social-buttons button:hover {
+    border: 0.8px solid #bbbbbb;
+    background: #e9e9e9;
   }
   
   .social-buttons div {
@@ -222,6 +234,7 @@ body {
   }
   
   .new-on-artline {
+    margin-top: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -337,7 +350,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5px;
+    gap: 10px;
   }
   
   .mini-menu-login a {
@@ -356,7 +369,7 @@ body {
   
   .mini-menu-login a:not(:last-child)::after {
     content: '|';
-    margin-left: 5px;
+    margin-left: 10px;
     color: #bebebe;
     display: none;
   }
