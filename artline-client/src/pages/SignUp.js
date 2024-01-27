@@ -9,7 +9,7 @@ import { Input, Tooltip } from 'antd';
 import api from '../services/api/api';
 
 export default function SignUp() {
-  const navigate = useNavigate(); // Заменить useHistory на useNavigate
+  const navigate = useNavigate(); 
   const [saveUser, setSaveUser] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -29,7 +29,8 @@ export default function SignUp() {
     const isValid = email.trim() !== '' && emailRegex.test(email);
     setErrors((prevErrors) => ({
       ...prevErrors,
-      email: { isValid, msg: isValid ? '' : 'Email is required and must be valid!' },
+      email: { isValid, msg: isValid ? '' 
+      : 'Email is required and must be valid!' },
     }));
     return isValid;
   };
@@ -38,7 +39,8 @@ export default function SignUp() {
     const isValid = password.trim() !== '' && password.length >= 6;
     setErrors((prevErrors) => ({
       ...prevErrors,
-      password: { isValid, msg: isValid ? '' : 'Password is required and must be at least 6 characters!' },
+      password: { isValid, msg: isValid ? '' 
+      : 'Password is required and must be at least 6 characters!' },
     }));
     return isValid;
   };
@@ -47,7 +49,8 @@ export default function SignUp() {
     const isValid = repeatPassword.trim() !== '' && repeatPassword === password;
     setErrors((prevErrors) => ({
       ...prevErrors,
-      repeatPassword: { isValid, msg: isValid ? '' : 'Passwords do not match!' },
+      repeatPassword: { isValid, msg: isValid ? '' 
+      : 'Passwords do not match!' },
     }));
     return isValid;
   };
@@ -61,15 +64,12 @@ export default function SignUp() {
       try {
         const userData = { email, password, repeatPassword };
         const response = await api.register(userData);
-        
-        // Обрабатываем успешный ответ от сервера
+
         console.log('Sign-up successful', response);
 
-        // Переход на главную страницу после успешной регистрации
-        navigate('/'); // Заменить history.push('/') на navigate('/')
+        navigate('/account-settings'); // Redirect to AccountSettings after successful registration
 
       } catch (error) {
-        // Обрабатываем ошибки регистрации
         console.error('Registration failed', error);
       }
     } else {

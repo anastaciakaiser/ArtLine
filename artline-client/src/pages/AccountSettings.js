@@ -1,34 +1,35 @@
+// AccountSettings.js
 import React, { useState } from 'react';
 import './AccountSettings.css';
 
 export default function AccountSettings() {
-  const [avatar, setAvatar] = useState('default-avatar.jpg'); // Дефолтный аватар
-  const [username, setUsername] = useState('Имя пользователя'); // Дефолтное имя пользователя
-  const [email, setEmail] = useState('example@example.com'); // Дефолтный email
-  const [password, setPassword] = useState(''); // State для пароля
+  const [avatar, setAvatar] = useState('default-avatar.jpg');
+  const [username, setUsername] = useState('Имя пользователя');
+  const [email, setEmail] = useState('example@example.com');
+  const [password, setPassword] = useState('');
 
   const handleAvatarChange = () => {
-    // Логика смены аватара
+    // Logic for changing avatar
     // ...
   };
 
   const handleUsernameChange = () => {
-    // Логика смены имени пользователя
+    // Logic for changing username
     // ...
   };
 
   const handleEmailChange = () => {
-    // Логика смены email
+    // Logic for changing email
     // ...
   };
 
   const handlePasswordChange = () => {
-    // Логика смены пароля
+    // Logic for changing password
     // ...
   };
 
   const handleDeleteAccount = () => {
-    // Логика удаления аккаунта
+    // Logic for deleting the account
     // ...
   };
 
@@ -39,19 +40,19 @@ export default function AccountSettings() {
       <div className="setting-item">
         <label>Аватар:</label>
         <img src={avatar} alt="Аватар" />
-        <button  className='but' onClick={handleAvatarChange}>Сменить аватар</button>
+        <button onClick={handleAvatarChange}>Сменить аватар</button>
       </div>
 
       <div className="setting-item">
         <label>Имя пользователя:</label>
         <span>{username}</span>
-        <button className='but' onClick={handleUsernameChange}>Сменить имя пользователя</button>
+        <button onClick={handleUsernameChange}>Сменить имя пользователя</button>
       </div>
 
       <div className="setting-item">
         <label>Email:</label>
         <span>{email}</span>
-        <button className='but' onClick={handleEmailChange}>Сменить email</button>
+        <button onClick={handleEmailChange}>Сменить email</button>
       </div>
 
       <div className="setting-item">

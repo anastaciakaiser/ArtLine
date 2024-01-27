@@ -1,0 +1,147 @@
+/* ArtistHome.css */
+.artist-home {
+  font-family: 'Arial', sans-serif;
+}
+
+.header {
+  background: #5B5B5B;
+  padding: 10px;
+  text-align: center;
+  height: 299px;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.left-block {
+  position: relative;
+  top: -205px;
+  width: 255px;
+  margin-left: 278px;
+  background: #E1E1E1;
+  display: flex;
+  flex-direction: column;
+  border: 14px solid #E1E1E1;
+  border-radius: 12px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+
+.social-links img {
+  margin-bottom: 5px;
+  width: 12px;
+  height: 12px;
+  background: #bebebe;
+  display: inline-block;
+  box-sizing: content-box;
+  padding: 10px;
+  align-items: flex-start;
+  gap: 10px;
+  border-radius: 8px;
+  background: #CACACA;
+  margin-bottom: 24px;
+}
+
+.avatar {
+  width: 225px;
+  height: 280px;
+  margin-bottom: 30px;
+  border-radius: 3px;
+}
+
+.followers {
+  color: #2A2A2A;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 14px;
+}
+
+.follow-and-sub-btns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.follow-and-sub-btns button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 225px;
+  height: 36px;
+  border: 0.5px solid rgba(188, 188, 188, 0.60);
+  background: #E1E1E1;
+  align-items: center;
+  justify-content: center;
+  color: #636363;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 18px;
+  cursor: pointer;
+}
+
+.follow-and-sub-btns button:hover {
+  border: 0.5px solid rgba(156, 156, 156, 0.6);
+  background: #c9c9c9;
+  color: #494949;
+}
+
+.follow-and-sub-btns button img {
+  width: 24px;
+  height: 24px;
+  margin-right: 5px; 
+  margin-bottom: 3px;
+}
+
+.title {
+  color: #2A2A2A;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-align: left;
+  margin-bottom: 18px;
+}
+
+.series-info {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: #2A2A2A;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.right-block {
+  width: 35%;
+}
+
+.post-input {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: text;
+}
+
+.post-options {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}

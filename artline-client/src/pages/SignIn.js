@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './SignIn.css';
 import logo from '../assets/logo_full.png';
 import googleIcon from '../assets/google.png';
@@ -7,9 +7,27 @@ import facebookIcon from '../assets/fb.png';
 
 export default function SignIn() {
   const [saveUser, setSaveUser] = useState(false);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleCheckboxChange = () => {
     setSaveUser(!saveUser);
+  };
+
+  const handleLogin = async () => {
+    // Replace the following with your actual login logic (API call or authentication method)
+    try {
+      // Example: Simulating a successful login after a short delay
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      console.log('Login successful');
+      
+      // Redirect to the main page after successful login
+      navigate('/');
+    } catch (error) {
+      console.error('Login failed', error);
+      // Handle login failure, show error messages, etc.
+    }
   };
 
   return (
@@ -28,11 +46,21 @@ export default function SignIn() {
             <div className="form-input">
               <div className="input-wrapper">
                 <label htmlFor="username">Username/Email</label>
-                <input type="text" id="username" />
+                <input
+                  type="text"
+                  id="username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
               </div>
               <div className="input-wrapper">
                 <label htmlFor="password">Password</label>
-                <input type={saveUser ? "text" : "password"} id="password" />
+                <input
+                  type={saveUser ? "text" : "password"}
+                  id="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
               </div>
               <div className="signin-checkbox" onClick={handleCheckboxChange}>
                 <input type="checkbox" id="keepLoggedIn" />
@@ -43,7 +71,9 @@ export default function SignIn() {
                   <a href="#">Forgot your password?</a>
                 </span>
               </div>
-              <button className="login-button">Log In</button>
+              <button className="login-button" onClick={handleLogin}>
+                Log In
+              </button>
             </div>
           </div>
           <div className="signin-social">

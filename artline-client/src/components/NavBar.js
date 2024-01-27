@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useMatch, useResolvedPath } from 'react-router-dom';
+import { useAuth } from '../services/api/AuthContext';
 import logo from '../assets/logo.png';
 import search_icon from '../assets/search_icon.png';
 import account_avatar_mini from '../assets/account_avatar_mini.png';
-import './NavBar.css'; 
+import './NavBar.css';
 
 function NavBar() {
-  const [isLoggedIn, setLoggedIn] = useState(false);
-
-  const checkLoginStatus = () => {
-    setLoggedIn(true);
-  };
+  const { user } = useAuth();
 
   return (
     <nav className='nav'>
@@ -32,9 +29,9 @@ function NavBar() {
             <img src={search_icon} alt="search icon" />
           </Link>
 
-          {isLoggedIn ? (
-            <Link to='/' className='account-avatar-mini'>
-              <img src={account_avatar_mini} alt="account avatar mini" />
+          {user ? (
+            <Link to='/profile' className='account-avatar-mini'>
+              <img src={user.avatar} alt="account avatar mini" />
             </Link>
           ) : (
             <CustomLink to="/login" className="login-link">Log In</CustomLink>
